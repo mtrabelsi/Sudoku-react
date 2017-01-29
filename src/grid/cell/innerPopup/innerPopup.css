@@ -1,3 +1,14 @@
-tr > td:hover {
-  background-color: #FDE1AF;
+table.inner tr > td:hover {
+  background-color: #DAD7D7;
+}
+table.inner tr > td {
+  all: default;
+  font-family: sans-serif;
+}
+table.inner {
+  font-size: initial;
+  border-collapse:collapse;
+  width: 50px;
+  height: 50px;
+  margin: auto;
 }
