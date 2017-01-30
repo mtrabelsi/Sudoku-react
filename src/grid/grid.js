@@ -4,15 +4,8 @@ import './grid.css'
 
 class Grid extends React.Component {
   getClassNames(l, c) {
-    let classNames = ''
-    if( [0,1,2,6,7,8].includes(l) && [0,1,2,6,7,8].includes(c) || [3,4,5].includes(l)&&[3,4,5].includes(c)) {
-      classNames+='highlight'
-    }
-    const game = this.props.game
-    if(!game.isMoveOk && game.conflictRow === l && game.conflictColumn === c) {
-      classNames+= ' ' + 'highlightError'
-    }
-    return classNames
+    const ret = ([0,1,2,6,7,8].includes(l) && [0,1,2,6,7,8].includes(c) || [3,4,5].includes(l)&&[3,4,5].includes(c))
+    return ret ? 'highlight' : ''
   }
   render() {
     return (<table className="table"><tbody>
@@ -24,8 +17,6 @@ class Grid extends React.Component {
         })}
     </tbody></table>)
   }
-
 }
-
 
 export default Grid

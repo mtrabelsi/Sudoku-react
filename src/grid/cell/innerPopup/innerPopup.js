@@ -4,17 +4,22 @@ import './innerPopup.css'
 
 class InnerPopup extends React.Component {
   render() {
+    const arr = new Array(this.props.size).fill(0)
+    let i = 0
     return (
       <table className='inner'>
         <tbody>
-          <tr><td onClick={this.props.handleClick}>1</td><td onClick={this.props.handleClick}>2</td><td onClick={this.props.handleClick}>3</td></tr>
-          <tr><td onClick={this.props.handleClick}>4</td><td onClick={this.props.handleClick}>5</td><td onClick={this.props.handleClick}>6</td></tr>
-          <tr><td onClick={this.props.handleClick}>7</td><td onClick={this.props.handleClick}>8</td><td onClick={this.props.handleClick}>9</td></tr>
+          {arr.map( ( valTR, indexTR ) => {
+            return ( <tr key={indexTR}>
+              {arr.map( ( valTD, indexTD ) => {
+               return ( <td key={indexTD} onClick={this.props.handleClick}> {++i} </td>)
+             })}
+              </tr>)
+          })}
         </tbody>
       </table>
     )
   }
 }
-
 
 export default InnerPopup

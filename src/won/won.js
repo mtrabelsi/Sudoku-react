@@ -1,14 +1,25 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { newGame } from './../grid/actions'
+import { defaultBoard } from './../game.const'
 import './won.css'
 
 class Won extends React.Component {
   render(){
-    return (<div className='AlertBox'>
+    return (<div className='alertBox'>
         <span>You <b>won!</b>, are you ready for a new game?</span><br />
-        <button>New Board</button>
+        <button onClick={e => this.props.newGame()}>New Board</button>
       </div>)
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    newGame: () => {
+      dispatch(newGame(defaultBoard))
+    }
+  }
+}
 
-export default Won
+const WonContainer = connect(null, mapDispatchToProps)(Won)
+export default WonContainer

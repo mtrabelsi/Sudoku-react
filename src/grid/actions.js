@@ -4,7 +4,14 @@ export const MOVE_STARTED = 'MOVE_STARTED'
 export const MOVE_SUCCESS = 'MOVE_SUCCESS'
 export const MOVE_BAD_REQUEST = 'MOVE_BAD_REQUEST'
 export const MOVE_CONFLICT = 'MOVE_CONFLICT'
+export const NEW_GAME = 'NEW_GAME'
 
+export function newGame(sudokuBoard) {
+  return {
+    type : NEW_GAME,
+    value : sudokuBoard
+  }
+}
 
 export function moveStarted(row, col) {
   return {
@@ -22,6 +29,7 @@ export function moveSuccess(response) {
     value : response
   }
 }
+
  export function moveBadRequest() {
    return {
      type : MOVE_BAD_REQUEST

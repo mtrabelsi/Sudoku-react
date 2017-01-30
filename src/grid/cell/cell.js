@@ -2,37 +2,28 @@ import React from 'react'
 import InnerPopup from './innerPopup/innerPopup'
 import Loading from './loading/loading'
 import './cell.css'
+import CellHelper from './cell.helper'
 
 class Cell extends React.Component {
   constructor (props) {
     super(props)
     this.state = { clicked : false }
-    this.showPopup = this.showPopup.bind(this)
-    this.clickPopup = this.clickPopup.bind(this)
+    this.CellHelper = new CellHelper(this)
   }
-  showPopup(e) {
-    if( e.target.innerText === '') {
-      this.setState({ clicked : true })
-    }
-  }
-  clickPopup(e) {
-    this.props.move(this.props.game.sudokuBoard, this.props.row, this.props.column, Number(e.target.innerText))
-    this.setState( prevState => ({
-        clicked: !prevState.clicked
-      })
-    )
+  componentWillReceiveProps() {
+    this.setState({ clicked : false })
   }
   render() {
-    const req = this.props.game.fetch
     return (
-      <td className={'square '+ this.props.classNames} onClick={this.showPopup}>
-        {this.props.value !== 0 ? this.props.value : ''}
-        {this.state.clicked && !this.props.game.isFetching ? <InnerPopup handleClick={this.clickPopup} /> : ''}
-        {req.isFetching && this.props.row===req.fetchRow && this.props.column===req.fetchCol ? <Loading /> : '' }
+      <td className={'square '+ this.props.classNames} onClick={this.CellHelper.showPopup}>
+        <div className={this.CellHelper.errorHighlight()}>
+        {this.props.value !== 0 && !this.state.clicked && !this.CellHelper.isFetching() ? this.props.value : ''}
+        {this.state.clicked && !this.props.game.isFetching || this.props.value !== 0 && this.state.clicked&&!this.props.game.isFetching ? <InnerPopup size={Math.sqrt(this.props.game.sudokuBoard.length)} handleClick={this.CellHelper.clickPopup} /> : ''}
+        {this.CellHelper.isFetching() ? <Loading /> : '' }
+        </div>
       </td>
     )
   }
 }
 
-/* */
 export default Cell

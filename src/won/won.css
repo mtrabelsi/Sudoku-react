@@ -1,5 +1,5 @@
 
-.AlertBox {
+.alertBox {
   font-family:  monospace;
   position: absolute;
   top: 32%;
@@ -15,6 +15,7 @@
 span {
   font-size: 17px;
 }
+
 button {
   position: relative;
   left: 40%;

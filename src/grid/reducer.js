@@ -1,9 +1,9 @@
 
-import { MOVE_STARTED, MOVE_BAD_REQUEST, MOVE_CONFLICT, MOVE_SUCCESS } from './actions'
+import { NEW_GAME, MOVE_STARTED, MOVE_BAD_REQUEST, MOVE_CONFLICT, MOVE_SUCCESS } from './actions'
+import { defaultBoard } from './../game.const'
 
-const initState = { sudokuBoard :[[7,0,0,0,4,0,5,3,0],[0,0,5,0,0,8,0,1,0],[0,0,8,5,0,9,0,4,0],
-                                  [5,3,9,0,6,0,0,0,1],[0,0,0,0,1,0,0,0,5],[8,0,0,7,2,0,9,0,0],
-                                  [9,0,7,4,0,0,0,0,0],[0,0,0,0,5,7,0,0,0],[6,0,0,0,0,0,0,5,0]],
+const initState = {
+  sudokuBoard : defaultBoard,
   fetch : {
     isFetching: false,
     fetchRow : -1,
@@ -17,6 +17,20 @@ const initState = { sudokuBoard :[[7,0,0,0,4,0,5,3,0],[0,0,5,0,0,8,0,1,0],[0,0,8
 
 export default function(state = initState, action) {
   switch (action.type) {
+    case NEW_GAME: {
+      return Object.assign({}, state, {
+        sudokuBoard : action.value,
+        fetch : {
+          isFetching: false,
+          fetchRow : -1,
+          fetchCol : -1
+        },
+        isMoveOk : true,
+        conflictRow : -1,
+        conflictColumn : -1,
+        gameOver : false
+      })
+    }
     case MOVE_STARTED: {
       return Object.assign({}, state, { fetch : {
           isFetching: true,
@@ -32,7 +46,7 @@ export default function(state = initState, action) {
           fetchCol : -1
         }})
     }
-    //{board: null, conflictRow: 0, conflictColumn: 0, valid: false, gameOver: false}
+
     case MOVE_CONFLICT: {
       return Object.assign({}, state, {
         isMoveOk : action.value.valid,
@@ -62,6 +76,5 @@ export default function(state = initState, action) {
     }
 
     default: return state
-
   }
 }

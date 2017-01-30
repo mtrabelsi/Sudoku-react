@@ -5,14 +5,13 @@ import React from 'react'
 import Won from './won/won'
 
 class Game extends React.Component {
-  render(){
+  render() {
     return (<div>
               <Grid move={this.props.move} game={this.props.game} />
-              <Won />
+              {this.props.game.gameOver ? <Won /> : '' }
            </div>)
   }
 }
-
 
 const mapStateToProps = (state) => {
   return {
@@ -28,9 +27,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-
-
-
 const GameContainer = connect(mapStateToProps, mapDispatchToProps)(Game)
-
 export default GameContainer
