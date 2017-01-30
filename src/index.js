@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import createLogger from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import Reducer from './grid/reducer'
-import Grid from './grid/gridContainer'
+import Game from './game'
 
 const loggerMiddleware = createLogger()
 
@@ -15,7 +15,7 @@ const store = createStore( Reducer,
 
 ReactDOM.render(
   <Provider store={store}>
-    <Grid />
+    <Game />
   </Provider>,
   document.getElementById('root')
 );

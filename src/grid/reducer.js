@@ -32,9 +32,14 @@ export default function(state = initState, action) {
           fetchCol : -1
         }})
     }
-
+    //{board: null, conflictRow: 0, conflictColumn: 0, valid: false, gameOver: false}
     case MOVE_CONFLICT: {
-      return Object.assign({}, state, {fetch : {
+      return Object.assign({}, state, {
+        isMoveOk : action.value.valid,
+        conflictRow : action.value.conflictRow,
+        conflictColumn : action.value.conflictColumn,
+        gameOver : action.value.gameOver,
+        fetch : {
           isFetching: false,
           fetchRow : -1,
           fetchCol : -1

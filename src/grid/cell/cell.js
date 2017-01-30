@@ -25,7 +25,7 @@ class Cell extends React.Component {
   render() {
     const req = this.props.game.fetch
     return (
-      <td className='square' onClick={this.showPopup}>
+      <td className={'square '+ this.props.classNames} onClick={this.showPopup}>
         {this.props.value !== 0 ? this.props.value : ''}
         {this.state.clicked && !this.props.game.isFetching ? <InnerPopup handleClick={this.clickPopup} /> : ''}
         {req.isFetching && this.props.row===req.fetchRow && this.props.column===req.fetchCol ? <Loading /> : '' }

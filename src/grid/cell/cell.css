@@ -10,3 +10,14 @@
   background-color: #EFEFEF;
   cursor: pointer;
 }
+
+.square.highlight:hover {
+  background-color: #F5F3F3;
+}
+.highlight {
+  background-color: #EFEFEF;
+}
+
+.highlightError {
+  background-color: red;
+}

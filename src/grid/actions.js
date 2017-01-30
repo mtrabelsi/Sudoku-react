@@ -48,10 +48,10 @@ export function moveSuccess(response) {
      }).catch(function (error) {
        const status = error.response.status
        if(status === 409) {
-         dispatch(moveBadRequest())
+           dispatch(moveConflict(error.response.data))
        } else {
          if (status === 400){
-           dispatch(moveConflict(error.response.data))
+           dispatch(moveBadRequest())
          }
        }
     })
