@@ -2,11 +2,13 @@ import { connect } from 'react-redux'
 import { move } from './grid/actions'
 import Grid from './grid/grid'
 import React from 'react'
+import Won from './won/won'
 
 class Game extends React.Component {
   render(){
     return (<div>
               <Grid move={this.props.move} game={this.props.game} />
+              <Won />
            </div>)
   }
 }

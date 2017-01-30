@@ -1,0 +1,30 @@
+
+.AlertBox {
+  font-family:  monospace;
+  position: absolute;
+  top: 32%;
+  left: 33%;
+  width: 34%;
+  height: 16%;
+  border-radius: 5px 5px 5px 5px;
+  background: rgba(73,230,16,0.9);
+  box-shadow: #7A7A7A 10px 10px 10px;
+  padding: 14px;
+}
+
+span {
+  font-size: 17px;
+}
+button {
+  position: relative;
+  left: 40%;
+  top: 50%;
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 1%;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 10px;
+}
